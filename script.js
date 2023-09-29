@@ -10,5 +10,15 @@ if (!reduceMotion.matches) {
 function addAnimation() {
     scrollers.forEach(scroller => {
         scroller.setAttribute('data-animated', true)
+
+        const scrollerInner = scroller.querySelector('.scroller__inner')
+        const scrollerContent = Array.from(scrollerInner.children) /*yt */
+
+        scrollerContent.forEach(item => {
+            const duplicateItem = item.cloneNode(true)
+            duplicateItem.setAttribute('aria-hidden', true)
+            scrollerInner.appendChild(duplicateItem)
+        })
+
     })
 }
