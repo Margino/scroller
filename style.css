@@ -50,6 +50,14 @@ body {
 }
 
 .scroller[data-animated="true"] .scroller__inner {
+    /* width: fit-content; */
+    width: max-content; /*так фактическая ширина, а не контейнера scroller*/
     flex-wrap: nowrap;
+    animation: scroll 10s linear infinite;
 }
-  
+
+@keyframes scroll {
+    to {
+        transform: translate(calc(-50% - 0.5rem)); /*не 100, т.к. мы дублируем контент. 0.5rem из-за gap в .scroller__inner. Не 1rem, т.к. 50% */
+    }
+}
