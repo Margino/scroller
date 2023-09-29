@@ -53,7 +53,28 @@ body {
     /* width: fit-content; */
     width: max-content; /*так фактическая ширина, а не контейнера scroller*/
     flex-wrap: nowrap;
-    animation: scroll 10s linear infinite;
+    animation: 
+        scroll
+        var(--_animation-duration, 40s)
+        var(--_animation-direction, forwards)
+        linear
+        infinite;
+}
+
+.scroller[data-direction="right"] .scroller__inner {
+    --_animation-direction: reverse;
+}
+
+.scroller[data-direction="left"] .scroller__inner {
+    --_animation-direction: forwards;
+}
+
+.scroller[data-duration="fast"] .scroller__inner {
+    --_animation-duration: 20s;
+}
+
+.scroller[data-duration="slow"] .scroller__inner {
+    --_animation-duration: 50s;
 }
 
 @keyframes scroll {
